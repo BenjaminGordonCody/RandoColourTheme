@@ -82,6 +82,14 @@ const stringifyColour = (colour) => {
   return string;
 };
 
+const recolour = () => {
+  let color = ["P", "H1"];
+  let bgColor = ["DIV", "IMG"];
+  if (color.includes(focusedElement.tagName)) {
+    focusedElement.style.color = focusedColour;
+  }
+};
+
 //making blank swatches
 swatchContainerArray = makeSwatchContainers();
 for (let i = 0; i < nOfHues; i++) {
@@ -97,7 +105,8 @@ for (let row = 0; row < nOfHues; row++) {
     cell.style.backgroundColor = `rgb(${rgbString})`;
     cell.innerText = rgbString;
     cell.onclick = () => {
-      focusedElement.style.color = `rgb(${rgbString})`;
+      focusedColour = `rgb(${rgbString})`;
+      recolour();
     };
   }
 }
