@@ -1,7 +1,10 @@
 //globals
 const nOfShades = 15; //number of shades for each colour
-const nOfHues = 5; //number of colours
+const nOfHues = 6; //number of colours
+let focusedColour;
+let focusedElement;
 
+//functions that make divs
 const makeSwatchContainers = () => {
   //make rows of swatch containers
   for (let i = 0; i < nOfHues; i++) {
@@ -13,7 +16,7 @@ const makeSwatchContainers = () => {
   return swatchContainerArray;
 };
 
-const putSwatchesInto = (container, swatchContainerArray) => {
+const putBlankSwatchesInto = (container, swatchContainerArray) => {
   //fills a row with swatches
   for (let i = 0; i < nOfShades; i++) {
     let swatch = document.createElement("div");
@@ -25,6 +28,7 @@ const putSwatchesInto = (container, swatchContainerArray) => {
   }
 };
 
+//functions that generate, modify or translate colours
 const getRandomColour = () => {
   const colour = {
     r: 0,
@@ -52,7 +56,7 @@ const moveValues = (colour, amount) => {
 };
 
 const getPalletteFrom = (colour) => {
-  let increment = 765 / nOfShades + 1;
+  let increment = 765 / nOfShades + 1; //765 is max total value of r,g and b
   let pallette = [];
   for (let i = 0; i < nOfShades; i++) {
     let maxValue = increment * (i + 1);
@@ -62,7 +66,7 @@ const getPalletteFrom = (colour) => {
       b: colour.b,
       g: colour.g,
     };
-    while (newShade.r + newShade.b + newShade.g < minValue) {
+    while (newShade.r + newShade.b + newShade.g <= minValue) {
       moveValues(newShade, 5);
     }
     while (newShade.r + newShade.b + newShade.g > maxValue) {
@@ -78,11 +82,13 @@ const stringifyColour = (colour) => {
   return string;
 };
 
+//making blank swatches
 swatchContainerArray = makeSwatchContainers();
 for (let i = 0; i < nOfHues; i++) {
-  putSwatchesInto(i, swatchContainerArray);
+  putBlankSwatchesInto(i, swatchContainerArray);
 }
 
+//adding colours, legends and onclicks to swatches
 for (let row = 0; row < nOfHues; row++) {
   let pallette = getPalletteFrom(getRandomColour());
   for (let col = 0; col < nOfShades; col++) {
@@ -90,5 +96,17 @@ for (let row = 0; row < nOfHues; row++) {
     let cell = document.getElementById(`r${row}c${col}`);
     cell.style.backgroundColor = `rgb(${rgbString})`;
     cell.innerText = rgbString;
+    cell.onclick = () => {
+      focusedElement.style.color = `rgb(${rgbString})`;
+    };
   }
+}
+
+//making example elements selectable
+let egElements = document.getElementsByClassName("egElement");
+for (let i = 0; i < egElements.length; i++) {
+  console.log(egElements.length);
+  egElements[i].onclick = () => {
+    focusedElement = egElements[i];
+  };
 }
