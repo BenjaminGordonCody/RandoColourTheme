@@ -1,0 +1,28 @@
+#whole {
+  display: flex;
+  align-items: stretch;
+  flex-direction: row;
+  border: 5px solid black;
+}
+
+#colourGrid {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+}
+
+#example {
+  border: 5px solid yellow;
+  flex: 1;
+}
+
+.swatchContainer {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.swatch {
+  height: 5px;
+  flex: 1;
+}
