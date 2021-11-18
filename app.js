@@ -106,6 +106,7 @@ const recolour = () => {
   let bgColor = ["DIV", "IMG"];
   if (focusedElement.tagName == "BUTTON") {
     document.getElementById("example").style.backgroundColor = focusedColour;
+    document.body.style.backgroundColor = focusedColour;
   }
   if (color.includes(focusedElement.tagName)) {
     focusedElement.style.color = focusedColour;
@@ -147,5 +148,4 @@ function main() {
 
 main();
 // TODO
-// add option to lock elements
 // styling - hover elements get borders
