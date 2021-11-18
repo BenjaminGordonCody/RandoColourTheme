@@ -23,6 +23,10 @@
   flex: 1;
 }
 
+#outputArea {
+  max-width: 25vw;
+}
+
 /* Swatch elements */
 .swatchContainer {
   display: flex;
@@ -31,13 +35,24 @@
 }
 
 .swatch {
-  height: 5px;
   flex: 1;
-}
-
-#newSwatches {
-  border-radius: 30%;
-  align-self: start;
+  text-align: center;
+  clip-path: polygon(95% 0%, 100% 50%, 95% 100%, 0% 100%, 5% 50%, 0% 0%);
 }
 
 /* Output area */
+.outputContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+
+.outputLabel {
+  flex: 1;
+}
+
+.output {
+  flex: 1;
+  text-align: center;
+  border-radius: 25px;
+}
