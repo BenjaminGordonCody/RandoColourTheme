@@ -1,5 +1,5 @@
 /* Bounding boxes */
-#whole {
+#testArea {
   display: flex;
   align-items: stretch;
   flex-direction: row;
@@ -33,3 +33,5 @@
   height: 5px;
   flex: 1;
 }
+
+/* Output area */

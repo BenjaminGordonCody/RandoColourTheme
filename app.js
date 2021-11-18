@@ -3,6 +3,7 @@ const nOfShades = 15; //number of shades for each colour
 const nOfHues = 6; //number of colours
 let focusedColour;
 let focusedElement;
+let focusedOutput;
 
 //functions that make divs
 const makeSwatchContainers = () => {
@@ -94,6 +95,11 @@ const recolour = () => {
   }
 };
 
+const relabel = () => {
+  focusedOutput.innerText = focusedColour;
+  focusedOutput.style.backgroundColor = focusedColour;
+};
+
 //making blank swatches
 swatchContainerArray = makeSwatchContainers();
 for (let i = 0; i < nOfHues; i++) {
@@ -111,9 +117,13 @@ for (let row = 0; row < nOfHues; row++) {
     cell.onclick = () => {
       focusedColour = `rgb(${rgbString})`;
       recolour();
+      relabel();
     };
   }
 }
+
+//make an array of output divs
+let outputElements = document.getElementsByClassName("output");
 
 //making example elements selectable
 let egElements = document.getElementsByClassName("egElement");
@@ -121,11 +131,11 @@ for (let i = 0; i < egElements.length; i++) {
   console.log(egElements.length);
   egElements[i].onclick = () => {
     focusedElement = egElements[i];
+    focusedOutput = outputElements[i];
   };
 }
 
 // TODO
-// add clickable icon to change focused element to bgColor
 // add some record of currently used colours
 // add option to lock elements
 // add option to generate new swatches
