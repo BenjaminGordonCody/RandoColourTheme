@@ -3,14 +3,15 @@
   display: flex;
   align-items: stretch;
   flex-direction: row;
-  border: 5px solid black;
 }
 
 .mainBox {
-  border: 5px solid purple;
   margin: 40px;
   border-radius: 15px;
   padding: 20px;
+  background-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 5px 5px 5px rgba(125, 125, 150, 0.2),
+    -5px -5px 5px rgba(150, 125, 125, 0.2);
 }
 #colourGrid {
   display: flex;
@@ -32,6 +33,11 @@
 .swatch {
   height: 5px;
   flex: 1;
+}
+
+#newSwatches {
+  border-radius: 30%;
+  align-self: start;
 }
 
 /* Output area */
