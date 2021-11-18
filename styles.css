@@ -1,15 +1,22 @@
+/* Imports */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,500&family=Sawarabi+Mincho&display&family=Bebas+Neue&display==swap");
+
 /* Bounding boxes */
+
 #testArea {
   display: flex;
   align-items: stretch;
   flex-direction: row;
+  background-image: url(./paper-texture.jpg);
+  background-size: cover;
+  background-blend-mode: hue;
 }
 
 .mainBox {
   margin: 40px;
-  border-radius: 15px;
+  border-radius: 5px;
   padding: 20px;
-  background-color: rgba(255, 255, 255, 0.4);
+  background-color: rgba(255, 255, 255, 0.7);
   box-shadow: 5px 5px 5px rgba(125, 125, 150, 0.2),
     -5px -5px 5px rgba(150, 125, 125, 0.2);
 }
@@ -37,7 +44,14 @@
 .swatch {
   flex: 1;
   text-align: center;
-  clip-path: polygon(95% 0%, 100% 50%, 95% 100%, 0% 100%, 5% 50%, 0% 0%);
+  vertical-align: bottom;
+  transition: border 1s, border-radius 1s;
+}
+
+.swatch:hover {
+  color: rgba(255, 255, 255, 0.7);
+  border: 5px solid white;
+  border-radius: 15px;
 }
 
 /* Output area */
@@ -55,4 +69,43 @@
   flex: 1;
   text-align: center;
   border-radius: 25px;
+}
+
+/* Fonts */
+h1 {
+  font-family: "Sawarabi Mincho", sans-serif;
+}
+
+body {
+  font-family: Roboto, Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/* Pictures in testing area */
+#labrador {
+  background-image: url(./goodboy.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-blend-mode: luminosity;
+  clip-path: circle();
+  height: 150px;
+  width: 150px;
+  float: right;
+  border: 15px solid grey;
+  border-radius: 50%;
+}
+
+#gritty {
+  background-image: url(./grittyboy.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y: center;
+  background-blend-mode: luminosity;
+  height: 150px;
+  width: 150px;
+  float: left;
+  border: 15px solid grey;
+  border-radius: 25%;
+  margin: 15px;
 }

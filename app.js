@@ -103,13 +103,17 @@ const stringifyColour = (colour) => {
 // functions for changing page element colours/outputs
 const recolour = () => {
   let color = ["P", "H1"];
-  let bgColor = ["DIV", "IMG"];
+  let bgColor = ["DIV"];
   if (focusedElement.tagName == "BUTTON") {
     document.getElementById("example").style.backgroundColor = focusedColour;
     document.body.style.backgroundColor = focusedColour;
   }
   if (color.includes(focusedElement.tagName)) {
     focusedElement.style.color = focusedColour;
+  }
+  if (bgColor.includes(focusedElement.tagName)) {
+    focusedElement.style.backgroundColor = focusedColour;
+    focusedElement.style.borderColor = focusedColour;
   }
 };
 
