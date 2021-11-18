@@ -82,9 +82,13 @@ const stringifyColour = (colour) => {
   return string;
 };
 
+// function for making elements change colour
 const recolour = () => {
   let color = ["P", "H1"];
   let bgColor = ["DIV", "IMG"];
+  if (focusedElement.tagName == "BUTTON") {
+    document.getElementById("example").style.backgroundColor = focusedColour;
+  }
   if (color.includes(focusedElement.tagName)) {
     focusedElement.style.color = focusedColour;
   }
@@ -119,3 +123,10 @@ for (let i = 0; i < egElements.length; i++) {
     focusedElement = egElements[i];
   };
 }
+
+// TODO
+// add clickable icon to change focused element to bgColor
+// add some record of currently used colours
+// add option to lock elements
+// add option to generate new swatches
+// styling - hover elements get borders

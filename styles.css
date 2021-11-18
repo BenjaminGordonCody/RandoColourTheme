@@ -6,6 +6,12 @@
   border: 5px solid black;
 }
 
+.mainBox {
+  border: 5px solid purple;
+  margin: 40px;
+  border-radius: 15px;
+  padding: 20px;
+}
 #colourGrid {
   display: flex;
   flex-direction: row;
@@ -13,7 +19,6 @@
 }
 
 #example {
-  border: 5px solid yellow;
   flex: 1;
 }
 
