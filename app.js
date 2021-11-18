@@ -29,6 +29,23 @@ const putBlankSwatchesInto = (container, swatchContainerArray) => {
   }
 };
 
+function recolourSwatches() {
+  for (let row = 0; row < nOfHues; row++) {
+    let pallette = getPalletteFrom(getRandomColour());
+    for (let col = 0; col < nOfShades; col++) {
+      let rgbString = stringifyColour(pallette[col]);
+      let cell = document.getElementById(`r${row}c${col}`);
+      cell.style.backgroundColor = `rgb(${rgbString})`;
+      cell.innerText = rgbString;
+      cell.onclick = () => {
+        focusedColour = `rgb(${rgbString})`;
+        recolour();
+        relabel();
+      };
+    }
+  }
+}
+
 //functions that generate, modify or translate colours
 const getRandomColour = () => {
   const colour = {
@@ -83,7 +100,7 @@ const stringifyColour = (colour) => {
   return string;
 };
 
-// function for making elements change colour
+// functions for changing page element colours/outputs
 const recolour = () => {
   let color = ["P", "H1"];
   let bgColor = ["DIV", "IMG"];
@@ -100,43 +117,35 @@ const relabel = () => {
   focusedOutput.style.backgroundColor = focusedColour;
 };
 
-//making blank swatches
-swatchContainerArray = makeSwatchContainers();
-for (let i = 0; i < nOfHues; i++) {
-  putBlankSwatchesInto(i, swatchContainerArray);
-}
+function main() {
+  //making blank swatches
+  swatchContainerArray = makeSwatchContainers();
+  for (let i = 0; i < nOfHues; i++) {
+    putBlankSwatchesInto(i, swatchContainerArray);
+  }
 
-//adding colours, legends and onclicks to swatches
-for (let row = 0; row < nOfHues; row++) {
-  let pallette = getPalletteFrom(getRandomColour());
-  for (let col = 0; col < nOfShades; col++) {
-    let rgbString = stringifyColour(pallette[col]);
-    let cell = document.getElementById(`r${row}c${col}`);
-    cell.style.backgroundColor = `rgb(${rgbString})`;
-    cell.innerText = rgbString;
-    cell.onclick = () => {
-      focusedColour = `rgb(${rgbString})`;
-      recolour();
-      relabel();
+  //adding colours, legends and onclicks to swatches
+  recolourSwatches();
+
+  //making pallette refresh button
+  document
+    .getElementById("newSwatches")
+    .addEventListener("click", recolourSwatches);
+  //make an array of output divs
+  let outputElements = document.getElementsByClassName("output");
+
+  //making example elements selectable
+  let egElements = document.getElementsByClassName("egElement");
+  for (let i = 0; i < egElements.length; i++) {
+    console.log(egElements.length);
+    egElements[i].onclick = () => {
+      focusedElement = egElements[i];
+      focusedOutput = outputElements[i];
     };
   }
 }
 
-//make an array of output divs
-let outputElements = document.getElementsByClassName("output");
-
-//making example elements selectable
-let egElements = document.getElementsByClassName("egElement");
-for (let i = 0; i < egElements.length; i++) {
-  console.log(egElements.length);
-  egElements[i].onclick = () => {
-    focusedElement = egElements[i];
-    focusedOutput = outputElements[i];
-  };
-}
-
+main();
 // TODO
-// add some record of currently used colours
 // add option to lock elements
-// add option to generate new swatches
 // styling - hover elements get borders
