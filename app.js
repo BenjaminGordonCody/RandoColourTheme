@@ -37,6 +37,8 @@ function recolourSwatches() {
       let cell = document.getElementById(`r${row}c${col}`);
       cell.style.backgroundColor = `rgb(${rgbString})`;
       cell.innerText = rgbString;
+      cell.style.borderColor = `rgb(${rgbString})`;
+      cell.style.borderc;
       cell.onclick = () => {
         focusedColour = `rgb(${rgbString})`;
         recolour();

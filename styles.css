@@ -35,16 +35,31 @@
   flex: 1;
 }
 
-#outputArea {
-  max-width: 25vw;
-  flex: 1;
-}
-
 #linkBox {
   display: flex;
   flex-direction: column;
 }
 
+/* mobile variants */
+@media (max-aspect-ratio: 4/3) {
+  #testArea {
+    flex-direction: column;
+  }
+  .mainBox {
+    padding: 5px;
+    margin: 5px;
+  }
+}
+
+@media (max-width: 900px) {
+  #testArea {
+    flex-direction: column;
+  }
+  .mainBox {
+    padding: 5px;
+    margin: 5px;
+  }
+}
 /* Swatch elements */
 .swatchContainer {
   display: flex;
@@ -55,14 +70,14 @@
 .swatch {
   flex: 1;
   text-align: center;
-  vertical-align: bottom;
-  transition: border 1s, border-radius 1s;
+  transition: border-color 2s;
+  border: 2px solid;
+  font-size: xx-small;
 }
 
 .swatch:hover {
   color: rgba(255, 255, 255, 0.7);
-  border: 5px solid white;
-  border-radius: 15px;
+  border: 2px solid white;
 }
 
 /* Output area */
@@ -74,6 +89,9 @@
 
 .outputLabel {
   flex: 1;
+  text-align: right;
+  padding-right: 15px;
+  min-width: 10vw;
 }
 
 .output {
@@ -82,6 +100,9 @@
   border-radius: 25px;
 }
 
+.output:hover {
+  color: rgba(255, 255, 255, 0.7);
+}
 /* Fonts */
 h1 {
   font-family: "Sawarabi Mincho", sans-serif;
