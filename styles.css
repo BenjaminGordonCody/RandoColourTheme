@@ -70,9 +70,9 @@
 .swatch {
   flex: 1;
   text-align: center;
-  transition: border-color 2s;
   border: 2px solid;
   font-size: xx-small;
+  transition: background-color 1.5s, border-color 1.5s;
 }
 
 .swatch:hover {
